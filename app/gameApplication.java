@@ -1,14 +1,12 @@
 package RuukuGFW.app;
 
 import RuukuGFW.Framework;
-import RuukuGFW.UI.gamePane;
-import RuukuGFW.UI.gameScene;
 import javafx.application.Platform;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.image.Image;
+import javafx.scene.*;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -17,8 +15,8 @@ import java.util.HashMap;
 
 public class gameApplication {
     private final Stage stage;
-    private final gameScene scene;
-    private final gamePane root;
+    private final Scene scene;
+    private final Pane root;
 
     private final HashMap<String, View> viewMap;
     private final ObjectProperty<View> currentView;
@@ -32,8 +30,8 @@ public class gameApplication {
 
     public gameApplication(Stage stage) {
         this.stage = stage;
-        root = new gamePane();
-        scene = new gameScene(root);
+        root = new Pane();
+        scene = new Scene(root);
         viewMap = new HashMap<>();
         currentView = new SimpleObjectProperty<>();
         engine = new Engine();
@@ -135,10 +133,7 @@ public class gameApplication {
         stage.getIcons().add(new Image(filePath));
     }
 
-
-    //待补充 其他的stage设置方法
-
-    public gameScene getScene() {
+    public Scene getScene() {
         return scene;
     }
 
